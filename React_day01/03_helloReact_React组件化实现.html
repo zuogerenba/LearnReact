@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">app</div>
+  <!-- 添加依赖 -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- 注意事项：使用jsx，使其被使用，必须在script、标签中添加属性 -->
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          message: "Hello World"
+        }
+      }
+      btnClick() {
+        // this 是一个undefined？ coderwhy公众号
+        // 内部回调时 btnClick.apply(undefined)
+        console.log(this)
+        this.setState({
+          message: 'Hello React'
+        })
+        console.log(this.state.message)
+        // this.render() this.render() 永远不能手动调用，是要React本身调用的
+      }
+      render() {
+        return (
+          <div>
+            <h2>{this.state.message}</h2>
+            <button onClick={this.btnClick.bind(this)}>改变文本</button>          
+          </div>
+        )
+      }
+    }
+
+    // 渲染组件
+    ReactDOM.render(<App />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>
