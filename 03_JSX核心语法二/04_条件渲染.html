@@ -22,18 +22,33 @@
       constructor() {
         super();
         this.state = {
+          isLogin: true
         }
       }
 
       render() {
         return (
           <div>
+            <h2>{this.state.isLogin ? '欢迎回来' : '请登录'}</h2>
+            <button onClick={()=>{this.changLogin()}}>{this.state.isLogin ? '退出' : '登录'}</button>
+            <hr />
+            {/*登录后才显示*/}
+            <h2>{this.state.isLogin ? "你好啊，qmj":null}</h2>
+            {/*逻辑与方案更好*/}
+            <h2>{this.state.isLogin && "你好啊，qmj"}</h2>
+            {/*以上方法消耗性能，一直操作DOM*/}
           </div>
         )
       }
+      changLogin() {
+        this.setState({
+          isLogin: !this.state.isLogin
+        })
+        console.log(this.state.isLogin)
+      }
     }
 
-    ReactDOM.render(<App/>, document.getElementById('app'))
+    ReactDOM.render(<App />, document.getElementById('app'))
   </script>
 </body>
 

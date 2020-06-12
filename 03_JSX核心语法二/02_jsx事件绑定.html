@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+  <!-- 1.添加依赖 -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- 2.编写react语法 -->
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          mesasage: '你好啊',
+          count: 100
+        }
+        // 方案一,复用性比方案一高。但还有更好
+        this.sayhello = this.sayhello.bind(this)
+      }
+      sayhello() {
+        // console.log('hello')
+        console.log(this.state.mesasage) // 会报错，state没有，this是undefined,在内部做回调，call（undefined）
+      }
+      // 方案二 定义函数时箭头函数（也不推荐）
+      jia = () => {
+        console.log(this.state.count)
+      }
+      jian(name) {
+        console.log(this.state.count, name)
+      }
+      render() {
+        return (
+          <div>
+            {/*解决方案1,显示绑定，很少用
+            <button onClick={this.sayhello.bind(this)}>按钮</button>*/}
+            <button onClick={this.sayhello}>按钮</button>
+            <button onClick={this.jia}>+1</button>
+            {/*方案三 传入箭头函数，在剪头函数中调用外部函数，不会有this问题，传参数方便*/}
+            <button onClick={() => { this.jian("qmj") }}>-1</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>

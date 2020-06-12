@@ -19,15 +19,30 @@
   <script type="text/babel">
 
     class App extends React.Component {
-      constructor() {
-        super();
+      constructor(props) {
+        super(props);
         this.state = {
+          title: "标题",
+          link: 'http://www.baidu.com',
+          imgURL:'http://p2.music.126.net/L8IDEWMk_6vyT0asSkPgXw==/109951163990535633.jpg?param=140y140',
+          active: true
         }
       }
 
       render() {
+        const {title, imgURL, link, active} = this.state;
         return (
           <div>
+            <h2 title={title}>我是标题</h2>
+            <img src={imgURL} alt="" />
+            <a href={link}>百度一下</a>
+
+            {/*2.绑定class*/}
+            <div className="a b">我是div</div>
+            <div className={"a b " + (active ? "active": "")}>我是也是div</div>
+
+            {/*3.*/}
+            <div style={{color:"red",fontSize:"50px"}}>我是div,哈哈哈</div>
           </div>
         )
       }
