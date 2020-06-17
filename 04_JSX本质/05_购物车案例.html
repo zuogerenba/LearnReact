@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app"></div>
+  <!-- 1.添加依赖 -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- 2.编写react语法 -->
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+        }
+      }
+
+      render() {
+        return (
+          <div>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid #aaa;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app"></div>
+  <!-- 1.添加依赖 -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="./format-utils.js"></script>
+
+  <!-- 2.编写react语法 -->
+  <script type="text/babel">
+
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          books: [
+            { name: '算法导论', price: 85, date: '2006-9', count: 1 },
+            { name: 'UNIX编程艺术', price: 59, date: '2006-9', count: 1 },
+            { name: '编程珠玑', price: 39, date: '2006-9', count: 1 },
+            { name: '代码大全', price: 128, date: '2006-9', count: 1 },
+          ]
+        }
+      }
+
+      getTotalPrice() {
+        let totalPrice = 0;
+        for (let item of this.state.books) {
+          totalPrice += item.price * item.count
+        }
+        return formatPrice(totalPrice);
+      }
+
+      removeItem(index) {
+        this.setState({
+          books: this.state.books.filter((item, indey) => { return index !== indey })
+        })
+      }
+
+      changeBookCount(index, count) {
+        const newBooks = [...this.state.books];
+        newBooks[index].count += count;
+        this.setState({
+          books: newBooks
+        })
+      }
+      renderCart() {
+        return (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>书籍名称</th>
+                  <th>出版日期</th>
+                  <th>价格</th>
+                  <th>购买数量</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  this.state.books.map((item, index) => {
+                    return (
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td>{item.name}</td>
+                        <td>{item.date}</td>
+                        <td>{formatPrice(item.price)}</td>
+                        <td>
+                          <button disabled={item.count <= 1} onClick={e => { this.changeBookCount(index, -1) }}>-</button>
+                          {item.count}
+                          <button onClick={e => { this.changeBookCount(index, 1) }}>+</button>
+                        </td>
+                        <td><button onClick={e => this.removeItem(index)}>移除</button></td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+            <h2>总价格:{this.getTotalPrice()}</h2>
+          </div>
+        )
+      }
+      renderNull() {
+        return (
+          <h2>购物车没有东西~</h2>
+        )
+      }
+      render() {
+        return this.state.books.length ? this.renderCart() : this.renderNull()
+      }
+    }
+
+    ReactDOM.render(<App />, document.getElementById('app'))
+  </script>
+</body>
+
+</html>
