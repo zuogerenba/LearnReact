@@ -5,7 +5,6 @@ class Child extends Component {
 
   constructor(props) {
     super()
-
     this.props = props
   }
   render() {

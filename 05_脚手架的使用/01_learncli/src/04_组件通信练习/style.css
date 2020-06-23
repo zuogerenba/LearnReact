@@ -1,0 +1,12 @@
+.tab-control {
+  display: flex;
+  height: 44px;
+}
+.btn-item {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-item.active {
+  color: red;
+}
