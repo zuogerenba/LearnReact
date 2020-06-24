@@ -7,6 +7,13 @@
   text-align: center;
 }
 
+.btn-item span {
+  padding: 5px 8px;
+}
 .btn-item.active {
   color: red;
 }
+
+.btn-item.active span {
+  border-bottom: 3px solid red;
+} 

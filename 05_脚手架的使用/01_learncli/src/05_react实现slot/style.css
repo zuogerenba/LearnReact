@@ -1,0 +1,21 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+.left,.right{
+  height: 44px;
+  width: 70px;
+  text-align: center;
+  line-height: 44px;
+  background-color: red;
+}
+.center {
+  flex: 1;
+  text-align: center;
+  background-color: blue;
+  line-height: 44px;
+}
