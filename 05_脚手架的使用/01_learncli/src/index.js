@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // import App from './05_react实现slot/App'
 // import './04_组件通信练习/style.css'
 // import './05_react实现slot/style.css'
-import App from './11_高阶组件的使用/03_高阶组件-登录鉴权'
+import App from './10_受控和非受控组件/02_ref的转发'
 ReactDOM.render(
     <App />,
   document.getElementById('root')
