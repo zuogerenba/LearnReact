@@ -1,12 +1,15 @@
 import React, { PureComponent } from 'react'
-import Counter from './13_redux/Counter'
+import Home from './13_redux/Home'
+import About from './13_redux/About'
 
 export default class App extends PureComponent {
   render() {
     return (
       <div>
         App
-        <Counter />
+        <Home />
+        <hr/>
+        <About />
       </div>
     )
   }
