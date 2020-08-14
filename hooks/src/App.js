@@ -8,6 +8,8 @@ import MutilEffect from './02_useEffect的使用/04_多个Effect的使用'
 import ConetxtHook from './03_useContext的使用/useContext的使用'
 import ReducerHome from './04_useReducer的使用/home'
 import ReducerAbout from './04_useReducer的使用/about'
+import CallBackHook from './05_useCallback的使用/01_useCallback不能进行的性能优化'
+import CallBackHook02 from './05_useCallback的使用/02_useCallback的性能优化'
 
 
 export const UserContext = createContext();
@@ -29,9 +31,10 @@ export default function App() {
           <ConetxtHook />
         </UserTheme.Provider>
       </UserContext.Provider> */}
-
+{/* 
       <ReducerHome />
-      <ReducerAbout />
+      <ReducerAbout /> */}
+      <CallBackHook02 />
       <button onClick={e => setShow(!show)}>切换</button>
     </div>
   )
