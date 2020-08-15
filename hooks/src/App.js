@@ -10,6 +10,7 @@ import ReducerHome from './04_useReducer的使用/home'
 import ReducerAbout from './04_useReducer的使用/about'
 import CallBackHook from './05_useCallback的使用/01_useCallback不能进行的性能优化'
 import CallBackHook02 from './05_useCallback的使用/02_useCallback的性能优化'
+import RefHook from './useRef的使用/01_useRef引用DOM'
 
 
 export const UserContext = createContext();
@@ -34,7 +35,8 @@ export default function App() {
 {/* 
       <ReducerHome />
       <ReducerAbout /> */}
-      <CallBackHook02 />
+      {/* <CallBackHook02 /> */}
+      <RefHook />
       <button onClick={e => setShow(!show)}>切换</button>
     </div>
   )
