@@ -9,6 +9,9 @@ export default class App extends Component {
       titles: ['新款', '热门', '推荐']
     }
   }
+  componentWillUnmount() {
+    console.log('父组件卸载')
+  }
   render() {
     return (
       <div>

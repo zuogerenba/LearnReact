@@ -7,6 +7,9 @@ export default class TabControl extends Component {
       currentIndex: 0
     }
   }
+  componentWillUnmount() {
+    console.log('子组件卸载')
+  }
   render(props) {
     const { titles } = this.props;
     const { currentIndex } = this.state
